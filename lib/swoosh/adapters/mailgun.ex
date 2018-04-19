@@ -4,6 +4,10 @@ defmodule Swoosh.Adapters.Mailgun do
 
   For reference: [Mailgun API docs](https://documentation.mailgun.com/api-sending.html#sending)
 
+  ## Dependency
+  
+  Mailgun adapter requires `Plug` to work properly.
+
   ## Example
 
       # config/config.exs
@@ -18,7 +22,7 @@ defmodule Swoosh.Adapters.Mailgun do
       end
   """
 
-  use Swoosh.Adapter, required_config: [:api_key, :domain]
+  use Swoosh.Adapter, required_config: [:api_key, :domain], required_deps: [plug: Plug.Conn.Query]
 
   alias Swoosh.Email
   import Swoosh.Email.Render
